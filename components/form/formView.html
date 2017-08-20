@@ -1,0 +1,132 @@
+<div class="container">
+ <form ng-submit="addCR(CR)" class="form-horizontal" name="myForm">
+
+ <div class="row form-horizontal">
+ <div class="col-lg-6">
+  <div class="form-group">
+   <label class="col-lg-4 control-label" for="CRNO">CR Number</label>
+    <div class="col-lg-6">
+     <input type="text" id="CRNO" class="form-control" ng-model="CR.CRNO"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+  <label class="col-lg-4 control-label" for="MOTSID">MOTSID</label>
+    <div class="col-lg-6">
+     <input type="number" id="MOTSID" class="form-control" ng-model="CR.MOTSID"/>
+    </div>
+  </div>
+  </div>
+
+ <div class="col-lg-6">
+  <div class="form-group">
+    <label class="col-lg-4 control-label" for="Env">Environment</label>
+    <div class="col-lg-6">
+     <select class="form-control" id="Env" ng-model="CR.selectedEnv" ng-options="x for x in environment"> </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+   <label class="col-lg-4 control-label" for="App">Applications</label>
+    <div class="col-lg-6">
+     <input type="text" id="App" class="form-control" ng-model="CR.App"/>
+   </div>
+  </div>
+  </div>
+
+  </div>
+
+  <div ng-init="count=0" class="form-group">
+   <label class="col-lg-2 control-label" for="Servers">Application Servers</label>
+    <div class="col-lg-8">
+     <input type="text" id="Servers" class="form-control" ng-change="getserverscount(CR.servers)" ng-model="CR.servers" ng-list/>
+    </div>
+    <div class="col-lg-1">
+     <input style="text-align:center" class="form-control" value="{{count}}" ng-disabled="true" />
+    </div>
+  </div>
+
+  <div ng-init="dbcount=0" class="form-group">
+   <label class="col-lg-2 control-label" for="DB">DB Servers</label>
+    <div class="col-lg-8">
+     <input type="text" id="DB" class="form-control" ng-model="CR.db" ng-change="getdbcount(CR.db)" ng-list/>
+    </div>
+    <div class="col-lg-1">
+     <input style="text-align:center" class="form-control" value="{{dbcount}}" ng-disabled="true" />
+    </div>
+  </div>
+
+
+  <div class="row form-horizontal">
+  <div class="col-lg-6">
+  <div class="form-group">
+    <label  for="dtp_input1" class="col-lg-4 control-label">Planned start Date</label>
+        <my-datepicker ng-model="CR.startdate"></my-datepicker>
+  </div>
+
+
+
+  <div class="form-group">
+   <label class="col-lg-4 control-label" for="AppAck">App Acknowledgement</label>
+    <div class="col-lg-6">
+     <select class="form-control" id="AppAck" ng-model="CR.AppVal" ng-options="x for x in options"> </select>
+   </div>
+   </div>
+   </div>
+
+  <div class="col-lg-6">
+  <div class="form-group">
+    <label  for="dtp_input1" class="col-lg-4 control-label">Planned End Date</label>
+        <my-datepicker ng-model="CR.enddate"></my-datepicker>
+  </div>
+
+  <div class="form-group">
+  <label class="col-lg-4 control-label" for="DBAck">DB Acknowledgement</label>
+    <div class="col-lg-6">
+     <select class="form-control" id="DBAck" ng-model="CR.DBVal" ng-options="x for x in options"> </select>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <div class="form-group">
+   <label class="col-lg-2 control-label" for="Approvers">Approval groups</label>
+    <div class="col-lg-9">
+     <textarea class="form-control" id="Approvers" rows="1" ng-model="CR.approvers">
+  </textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
+   <label class="col-lg-2 control-label" for="chat">Chat Room</label>
+    <div class="col-lg-9">
+     <input type="url" id="chat" class="form-control" ng-model="CR.chatroom"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+   <label class="col-lg-2 control-label" for="To">To</label>
+    <div class="col-lg-9">
+     <input type="email" id="To" class="form-control" ng-model="CR.to"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+   <label class="col-lg-2 control-label" for="Cc">Cc</label>
+    <div class="col-lg-9">
+     <input type="email" id="Cc" class="form-control" ng-model="CR.Cc"/>
+    </div>
+  </div>
+  <input id="form-btn" type="submit"  value="Click here to send mail"  class="btn btn-primary btn-block"/>
+ </form>
+</div>
+
+<div class="row" style="text-align: center">{{msg}}</div>
+
+<footer class="footer">
+    <div class="container">
+        <span class="wrapper-vcenter text-muted">
+        <h5 class="center">AT&amp;T Proprietary (Internal Use Only); Not for use or disclosure outside the AT&amp;T companies except under written agreement</h5>
+        </span>
+    </div>
+</footer>

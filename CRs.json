@@ -1,0 +1,52 @@
+{
+  "CRs": [
+    {
+      "CRNO": "CHG0005248965",
+      "MOTSID": 5982,
+      "Env": "Development",
+      "Applications": "JUHYT",
+      "Application_servers": [
+        "ZXC",
+        "VCF",
+        "OKJ"
+      ],
+      "DB_servers": [
+        "GTY"
+      ],
+      "Coord": "somebody",
+      "Recount": 0,
+      "Planned_Start_date": "2017-08-07T20:35:59.000Z",
+      "Planned_End_date": "2017-08-06T18:35:59.000Z",
+      "App_Acknowledgement": "No",
+      "DB_Acknowledgement": "No",
+      "Approvers": "SWERTGB",
+      "Chatroom": "http://localhost:3000/main/form",
+      "To": "koteswar.meesala@gmail.com",
+      "Cc": "koteswar.meesala@gmail.com"
+    },
+    {
+      "CRNO": "CH000069857",
+      "selectedEnv": "Test",
+      "MOTSID": 5874,
+      "App": "UDAF",
+      "servers": [
+        "zbgt",
+        "loij"
+      ],
+      "db": [
+        "xbv"
+      ],
+      "startdate": "2017-07-30T19:35:05.000Z",
+      "enddate": "2017-07-31T21:40:05.000Z",
+      "DBVal": "No",
+      "AppVal": "Yes",
+      "approvers": "JHSUJS",
+      "chatroom": "http://localhost:3000/main/form",
+      "to": "koteswar.meesala@gmail.com",
+      "Cc": "koteswar.meesala@gmail.com",
+      "month": "August",
+      "recount": 0,
+      "reschedule": []
+    }
+  ]
+}

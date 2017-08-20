@@ -1,0 +1,63 @@
+<div class="container">
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
+ <thead>
+   <tr class="info">
+     <th>SNO</th>
+     <th>CRNO</th>
+     <th>MOTSID <br/> <input style="width:100%" type="text" ng-model="search.MOTSID"/></th>
+     <th>Applications</th>
+     <th>Environment</th>
+     <th>Count</th>
+     <th>MW Start <br/> <span>(in IST)</span></th>
+     <th>MW End <br/> <span>(in IST)</span></th>
+     <th>Coordinator <br /> <input style="width:100%" type="text" ng-model="search.coord"/></th>
+   <th>Resch-count</th>
+   </tr>
+ </thead>
+
+ <tbody>
+   <tr ng-repeat="x in CRs | filter: search track by $index">
+     <td>{{$index+1}}</td>
+     <td><a href="" data-toggle="modal" data-target="#myModal">{{x.CRNO}}</a></td>
+     <td>{{x.MOTSID}}</td>
+     <td>{{x.App}}</td>
+     <td>{{x.selectedEnv}}</td>
+     <td>{{x.totalcount}}</td>
+     <td>{{x.startdate | date:'medium'}}</td>
+     <td>{{x.enddate | date: 'medium'}}</td>
+     <td>{{x.coord}}</td>
+   <td><a href="">{{x.recount}}</a></td>
+   </tr>
+ </tbody>
+ </table>
+</div>
+</div>
+
+
+<div class="modal fade"  id="myModal" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">CR Info</h4>
+      </div>
+      <div class="modal-body">
+        <div ng-include="loadModal()"> </div>
+      </div>
+      <div class="modal-footer">
+    <button ng-click="cancel()" ng-hide="details" type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+      <button ng-click="reschedule()" ng-show="details"  type="button" class="btn btn-primary" >Reschedule
+      </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="footer"">
+            <div class="container">
+                <p class="text-muted2 text-center">© 2016 Tech Mahindra.  All Rights Reserved.</p>
+            </div> -->

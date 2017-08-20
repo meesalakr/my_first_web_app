@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="loginApp" lang="en" >
+<head>
+<base href="/login/"/>
+<meta charset="UTF-8">
+<title> Login Page </title>
+<link rel='shortcut icon' type='image/ico' href='/assets/favicon.ico' />
+<link href="/assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+<script type="text/javascript" src="/assets/js/angular.min.js"></script>
+<script type="text/javascript" src="/assets/js/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/components/Login/loginController.js"></script>
+<script type="text/javascript" src="/shared/app.services.js"></script>
+</head>
+
+<style>
+ .form-horizontal{
+ max-width: 800px;
+ margin: 0 auto;
+  padding: 15px;
+ }
+ body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+ }
+ .form-control {
+  width: 55%;
+ }
+
+ .a{
+ text-align: center;
+ }
+ .btn{
+  width: 100px;
+ }
+ label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+ }
+</style>
+
+<body ng-controller="loginController">
+
+
+<ui-view></ui-view>
+
+</body>
+</html>  

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <base href="/main/"/>
+  <meta charset="utf-8">
+  <title>MAIN</title>
+
+ <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"> -->
+<link rel='shortcut icon' type='image/ico' href='/assets/favicon.ico' />
+ <link href="/assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+ <link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+ <link href="/assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+<style type="text/css">
+ .active{
+    background-color: #333;
+    text-transform: uppercase;
+  }
+  .nav>li>a:focus, .nav>li>a:hover {
+    background-color: #333;
+  }
+
+ [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+  }
+
+ .page-header {
+    margin: 20px 0 20px;  
+ }
+  body {
+    background-color: #eee;
+  }
+  .nav-justified > li > a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: bold;
+    color: #2e6da4;
+    
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+  }
+  .nav-justified {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 52px;
+    box-shadow: 0 0 7px 0px black;
+  }
+  .input-group[class*=col-] {
+    float: left;
+  padding-right: 15px;
+    padding-left: 15px
+  }
+  #form-btn {
+    display: block;
+  margin: 10px auto;
+  }
+  input[type=submit].btn-block {
+    width: 35%;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+  }
+  #Approvers {
+    height: 68px;
+  margin-bottom: 6px;
+  }
+  .footer {
+    position: static;
+    width: 100%;
+    height: 60px;
+    background-color: #f5f5f5;
+  }
+
+  .wrapper-vcenter {
+    display: flex;
+  }
+
+  .h5, h5 {
+    font-size: 14px;
+  margin: 10px auto;
+  color: #a94442
+  }
+  th,td {
+   text-align: center
+   }
+</style>
+
+</head>
+
+<body ng-controller="myController">
+ <div style="margin-top:10px" class="container">
+ 
+  <p style="display: inline" ng-cloak>
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+  <b>Welcome {{mainuser}}</b></p>
+  <a style="color: red; margin-left: 2px;cursor: pointer"  ng-click="logout()" class="pull-right">
+  <b>Logout</b>
+  </a>
+  <span style="color: red; margin-top: 2px" class="glyphicon glyphicon-off pull-right" aria-hidden="true">
+  </span>
+ </div>
+ <div class="page-header">
+ <div class="container">
+
+ <nav>
+          <ul class="nav nav-justified">
+            <li>
+            <a ui-sref="home" ui-sref-active="active"><span style="margin-right: 4px" class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li><a ui-sref="form" ui-sref-active="active">CR Form</a></li>
+            <li><a ui-sref="details" ui-sref-active="active">CR Details</a></li>
+            <li><a ui-sref="MOTS" ui-sref-active="active">MOTS</a></li>
+            <li><a ui-sref="followup" ui-sref-active="active">Follow up</a></li>
+          </ul>
+ </nav>
+
+</div>
+</div>
+
+
+<div ui-view></div>
+
+
+
+
+<script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<script type="text/javascript" src="/assets/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script> -->
+ <script type="text/javascript" src="/assets/js/angular.min.js"></script>
+ <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-route.js"></script>-->
+ <script type="text/javascript" src="/assets/js/angular-ui-router.min.js"></script>
+ <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>-->
+ <!-- <script src="https://www.gstatic.com/charts/loader.js"></script>-->
+ <script type="text/javascript" src="/assets/js/googleapi.js"></script>
+ <script type="text/javascript" src="/shared/app.module.js"></script>
+ <script type="text/javascript" src="/shared/app.routes.js"></script>
+ <script type="text/javascript" src="/shared/app.services.js"></script>
+ <!-- <script type="text/javascript" src="/components/shared/directives.js"></script> -->
+ <script type="text/javascript" src="/components/home/homeController.js"></script>
+ <script type="text/javascript" src="/components/details/detailsController.js"></script>
+ <script type="text/javascript" src="/components/form/formController.js"></script>
+ <script type="text/javascript" src="/components/followup/followupController.js"></script>
+ <script type="text/javascript" src="/components/MOTS/statusController.js"></script>
+ <script type="text/javascript" src="/shared/app.directives.js"></script>
+ 
+
+
+
+</body>
+
+</html>

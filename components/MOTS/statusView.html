@@ -1,0 +1,82 @@
+<style>
+ th,td {
+   text-align: center;
+   font-size: 12px;
+   }
+ </style>
+<div class="container-fluid">
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
+ <thead>
+   <tr class="info">
+     <th>SNO</th>
+     <th>MOTSID <br/> <input  style="width: 120px" type="text" ng-model="search.MOTSID"/></th>
+     <th>Application</th>
+     <th>Servers</th>
+     <th>Non-Prod</th>
+     <th>Prod</th>
+     <th>Engagement</th>
+     <th>Coordinator <br /> <input  style="width: 120px" type="text" ng-model="search.Coord"/></th>
+     <th>Response received</th>
+     <th>CR's raised</th>
+     <th>CR servers %</th>
+     <th>Compliant %</th>
+     <th>Status last date</th>
+     <th style="width:180px">Daily updates</th>
+     <th>Planned follow up date</th>
+     <th>RAG</th>
+   </tr>
+ </thead>
+
+ <tbody>
+   <tr ng-repeat="x in MOTS_add track by $index">
+      <td>{{$index}}</td>
+      <td>{{x.MOTSID}}</td>
+      <td>{{x.App}}</td>
+      <td>{{x.serversassigned}}</td>
+      <td>{{x.Non-prod}}</td>
+      <td>{{x.Prod}}</td>
+      <td>{{x.Engagement}}</td>
+      <td>{{x.coord}}</td>
+      <td>
+      <input ng-model="x.responsereceived" type="number" class="form-control"/>
+      </td>
+      <td>{{x.CRs}}</td>
+      <td>{{CR_per}}</td>
+      <td>{{compliant_per}}</td>
+      <td>{{x.Statuslastdate}}</td>
+      <td>
+        <!-- <span ng-hide="editing" ng-click="editItem(item)">jhh{{MOTS.dailyupdates}}</span> -->
+        <!-- <input  ng-model="x.dailyupdates" ng-blur="doneEditing(item)" autofocus /> -->
+        <textarea ng-hide="x.updateseditor" ng-focus="editupdatecell($index)" class="form-control" name=""   rows="1">{{x.dailyupdates}}</textarea>
+        <textarea ng-if="x.updateseditor" ng-model="x.dailyupdates" ng-blur="editupdatecell($index)" class="form-control" name=""   rows="10" ang-autofocus></textarea>
+      </td>
+      <td style="margin-right: 10px">
+        <!-- <span ng-hide="editing" ng-dblclick="editItem(item)">{{x.Plannedfollowupdate}}</span>
+        <input ng-show="editing" ng-model="x.Plannedfollowupdate" ng-blur="doneEditing(item)" autofocus /> -->
+        <!-- <textarea class="form-control" name="" id=1""  rows="1"></textarea> -->
+        <input value="{{x.Plannedfollowupdate}}" ng-hide="x.dateeditor" ng-focus="editdatecell($index)" type="text" class="form-control">
+        <input ng-if="x.dateeditor" ng-model="x.Plannedfollowupdate" ng-blur="editdatecell($index)" type="date" class="form-control" ang-autofocus/>
+      </td>
+      <td>
+        <input ng-model="x.RAG" type="text" class="form-control">
+      </td>  
+   </tr>
+
+ </tbody>
+ </table>
+ 
+</div>
+</div>
+
+<div class="container-fluid" style="position: fixed; bottom: 0px; width: 100%; background: rgba(255, 255, 255, 0.86); z-index: 9; padding: 5px; box-shadow: 1px 2px 8px #333; ">
+            <div class="col-xs-12 text-center">
+                <button type="button" ng-click="postupdates()" class="btn btn-primary" style="float:none;width:50%"> Post updates </button>
+            </div>
+        </div>
+<!-- will have to use resolve peoperty to get this laoded after the data is available -->
+<div class="footer" style="margin-bottom:10px;">
+            <div class="container">
+                <p class="text-muted2 text-center">© 2016 Tech Mahindra.  All Rights Reserved.</p>
+            </div>
+</div>
