@@ -76,13 +76,12 @@ app.get('/CRdetails', function(req,res){
             res.end(JSON.stringify(obj));
         
     })
-
-  
 });
+console.log(new Date());
 
 app.post('/form', function(req,res){
 
-  jsonfile.readFile(__dirname+"/CRs_mod.json", function(err,obj){
+ jsonfile.readFile(__dirname+"/CRs_mod.json", function(err,obj){
         if(err){
             return console.log(err);
         }
@@ -94,7 +93,7 @@ app.post('/form', function(req,res){
             if(err) {
                return console.log(err);
             }
-            res.send('The file was saved!');
+            // res.send('The file was saved!');
           });
             }
             // else{
@@ -105,8 +104,32 @@ app.post('/form', function(req,res){
         
     })
 
+ jsonfile.readFile(__dirname+"/MOTS.json", function(err,obj){
+    if(err){
+      return console.log(err);
+    }
+    for(x in obj){
+       if(x == req.body.MOTSID){
+           obj[x].CRs++;
+           obj[x].serversinCRs = obj[x].serversinCRs + req.body.totalcount;
+            console.log(obj[x]);
+             jsonfile.writeFile(__dirname+"/MOTS.json", obj,function(err) {
+            if(err) {
+               return console.log(err);
+            }
+            res.send('The file contents are saved!');
+          });
+       }
+    }
+  });
+
+
+ 
+
+
 });
 
+ 
 app.put('/updateMOTS', function(req,res){
 
   console.log(req.body);

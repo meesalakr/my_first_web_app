@@ -4,22 +4,24 @@ app.controller('statusController', function($scope,$http,track,put){
     var arr = [];
    for(x in response){
        arr.push(response[x]);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-    }
+    }   
     $scope.MOTS = angular.copy(arr);
     console.log($scope.MOTS);
     angular.forEach(arr, function(value,key){
+        y =(value.serversinCRs*100)/(value.serversassigned);
+    value.CR_per = value.compliant_per = Math.round(y);
      value.updateseditor = false;
      value.dateeditor=false;
    });
     $scope.MOTS_add=arr;
     
-    }, function(response){
+   
+    },function(response){
     console.log(response);
    });
   
 
    $scope.postupdates = function(){
-     console.log($scope.MOTS_add);
      console.log($scope.MOTS);
      var obj = {};
    angular.forEach($scope.MOTS_add, function(value,key){
@@ -30,9 +32,18 @@ app.controller('statusController', function($scope,$http,track,put){
          (value.responsereceived!=$scope.MOTS[key].responsereceived))
     {
       obj[value.MOTSID] = value;
+      obj[value.MOTSID].Statuslastdate = new Date();
     }
     
     });
+
+    for(x in obj){
+        delete obj[x]['dateeditor'];
+        delete obj[x]['updateseditor'];
+        delete obj[x]['CR_per'];
+        delete obj[x]['compliant_per'];
+        console.log(obj[x]);
+    }
 
     console.log(obj);
 
@@ -52,8 +63,7 @@ app.controller('statusController', function($scope,$http,track,put){
    
    
 
-  $scope.compliant_per = 100;
-  $scope.CR_per=100;
+ 
 
   $scope.editupdatecell = function (index) {
     $scope.MOTS_add[index].updateseditor = ($scope.MOTS_add[index].updateseditor)? false: true;

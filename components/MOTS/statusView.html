@@ -19,8 +19,8 @@
      <th>Coordinator <br /> <input  style="width: 120px" type="text" ng-model="search.Coord"/></th>
      <th>Response received</th>
      <th>CR's raised</th>
-     <th>CR servers %</th>
-     <th>Compliant %</th>
+     <th>CR servers (in %)</th>
+     <th>Compliant (in %)</th>
      <th>Status last date</th>
      <th style="width:180px">Daily updates</th>
      <th>Planned follow up date</th>
@@ -30,11 +30,11 @@
 
  <tbody>
    <tr ng-repeat="x in MOTS_add track by $index">
-      <td>{{$index}}</td>
+      <td>{{$index+1}}</td>
       <td>{{x.MOTSID}}</td>
       <td>{{x.App}}</td>
       <td>{{x.serversassigned}}</td>
-      <td>{{x.Non-prod}}</td>
+      <td>{{x.Non_prod}}</td>
       <td>{{x.Prod}}</td>
       <td>{{x.Engagement}}</td>
       <td>{{x.coord}}</td>
@@ -42,9 +42,9 @@
       <input ng-model="x.responsereceived" type="number" class="form-control"/>
       </td>
       <td>{{x.CRs}}</td>
-      <td>{{CR_per}}</td>
-      <td>{{compliant_per}}</td>
-      <td>{{x.Statuslastdate}}</td>
+      <td>{{x.CR_per}}</td>
+      <td>{{x.compliant_per}}</td>
+      <td>{{x.Statuslastdate | date:'mediumDate'}}</td>
       <td>
         <!-- <span ng-hide="editing" ng-click="editItem(item)">jhh{{MOTS.dailyupdates}}</span> -->
         <!-- <input  ng-model="x.dailyupdates" ng-blur="doneEditing(item)" autofocus /> -->
