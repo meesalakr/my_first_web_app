@@ -1,4 +1,4 @@
-var app=angular.module("myApp",["ui.router"]);
+var app=angular.module("myApp",["ui.router",'ui.bootstrap']);
 
 app.run(function($rootScope,$window,auth){
      auth.isloggedIn().then(function(response){
