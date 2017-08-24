@@ -17,7 +17,12 @@ $stateProvider
 .state('details',{
    url:'/details',
    templateUrl: '/components/details/detailsView.html',
-   controller: 'detailsController'
+   controller: 'detailsController',
+   resolve:{
+      CRs: function(details){
+         return details.getCRdetails();
+      }
+   }
 })
 .state('MOTS',{
    url:'/status',
