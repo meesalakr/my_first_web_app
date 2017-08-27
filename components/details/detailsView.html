@@ -19,7 +19,7 @@
  <tbody>
    <tr ng-repeat="x in CRs | filter: search track by $index">
      <td>{{$index+1}}</td>
-     <td><a href="" ng-click="open($index)">{{x.CRNO}}</a></td>
+     <td><a href="" ng-click="open(x)">{{x.CRNO}}</a></td>
      <td>{{x.MOTSID}}</td>
      <td>{{x.App}}</td>
      <td>{{x.selectedEnv}}</td>
@@ -27,7 +27,7 @@
      <td>{{x.startdate | date:'medium'}}</td>
      <td>{{x.enddate | date: 'medium'}}</td>
      <td>{{x.coord}}</td>
-   <td><a href="">{{x.recount}}</a></td>
+   <td><a href="" ng-click="openresch(x)">{{x.recount}}</a></td>
    </tr>
  </tbody>
  </table>

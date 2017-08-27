@@ -65,6 +65,13 @@ app.get('/logout', function(req, res){
    res.redirect('/login');
 });
 
+//==============================================================================================//
+
+app.get('/columnchart/:id', function(req,res){
+   console.log(req.params.id);
+});
+
+//==============================================================================================//
 
 app.get('/CRdetails', function(req,res){
 
@@ -78,30 +85,25 @@ app.get('/CRdetails', function(req,res){
     })
 });
 console.log(new Date());
-
+// =========================================================================================//
 app.post('/form', function(req,res){
 
  jsonfile.readFile(__dirname+"/CRs_mod.json", function(err,obj){
         if(err){
             return console.log(err);
-        }
-        
+        } 
           for(x in obj){
             if(x == req.session.ATTUID){
-              obj[x].push(req.body);
-              jsonfile.writeFile(__dirname+"/CRs_mod.json", obj,function(err) {
+              obj[x].push(req.body);  
+              break;          
+            }
+          }
+         jsonfile.writeFile(__dirname+"/CRs_mod.json", obj,function(err) {
             if(err) {
                return console.log(err);
             }
             // res.send('The file was saved!');
           });
-            }
-            // else{
-            //   res.send('User does not exist. Retry');
-            // }
-            console.log(obj);
-          }
-        
     })
 
  jsonfile.readFile(__dirname+"/MOTS.json", function(err,obj){
@@ -113,30 +115,51 @@ app.post('/form', function(req,res){
            obj[x].CRs++;
            obj[x].serversinCRs = obj[x].serversinCRs + req.body.totalcount;
             console.log(obj[x]);
-             jsonfile.writeFile(__dirname+"/MOTS.json", obj,function(err) {
+            break;
+       }
+
+    }
+     jsonfile.writeFile(__dirname+"/MOTS.json", obj,function(err) {
             if(err) {
                return console.log(err);
             }
             res.send('The file contents are saved!');
           });
-       }
-    }
   });
-
-
- 
-
 
 });
 
- 
+//================================================================================================//
 app.put('/updateMOTS', function(req,res){
 
-  console.log(req.body);
+  jsonfile.readFile(__dirname+"/MOTS.json", function(err,obj){
+    if(err){
+      return console.log(err);
+    }
+    for(x in req.body){
+      console.log(x);
+      for(y in obj){
+        console.log(y);
+        if(x==y){
+          obj[y]=req.body[x];
+          console.log("value updated");
+          break;
+        }
+      }
+      console.log("Next");
+    }
+     jsonfile.writeFile(__dirname+"/MOTS.json", obj,function(err) {
+            if(err) {
+               return console.log(err);
+            }
+            res.send('The file contents are saved!');
+          });
 
-})
+  });
 
+});
 
+//=============================================================================================//
 app.get('/MOTSdetails', function(req,res){
   jsonfile.readFile(__dirname+"/MOTS.json", function(err,obj){
     if(err){
@@ -146,6 +169,10 @@ app.get('/MOTSdetails', function(req,res){
   });
 })
 
+//=============================================================================================//
+app.post('/reschedule', function(req,res){
+  
+})
 
 
 app.listen(3000, function(){

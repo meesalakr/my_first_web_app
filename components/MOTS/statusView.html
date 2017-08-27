@@ -15,35 +15,35 @@
      <th>Servers</th>
      <th>Non-Prod</th>
      <th>Prod</th>
-     <th>Engagement</th>
-     <th>Coordinator <br /> <input  style="width: 120px" type="text" ng-model="search.Coord"/></th>
-     <th>Response received</th>
+    <!--  <th>Engagement</th> -->
+     <th>Coordinator <br /> <input  style="width: 120px" type="text" ng-model="search.coord"/></th>
+     <th style="width: 40px;">Response received</th>
      <th>CR's raised</th>
      <th>CR servers (in %)</th>
      <th>Compliant (in %)</th>
-     <th>Status last date</th>
-     <th style="width:180px">Daily updates</th>
+     <th style="width:100px">Status last date</th>
+     <th style="width:200px">Daily updates</th>
      <th>Planned follow up date</th>
-     <th>RAG</th>
+     <th style="width: 60px">RAG</th>
    </tr>
  </thead>
 
  <tbody>
-   <tr ng-repeat="x in MOTS_add track by $index">
+   <tr ng-repeat="x in MOTS_add | filter:search track by $index">
       <td>{{$index+1}}</td>
-      <td>{{x.MOTSID}}</td>
+      <td><a href="" ng-click="open(x)">{{x.MOTSID}}</a></td>
       <td>{{x.App}}</td>
       <td>{{x.serversassigned}}</td>
       <td>{{x.Non_prod}}</td>
       <td>{{x.Prod}}</td>
-      <td>{{x.Engagement}}</td>
+     <!--  <td>{{x.Engagement}}</td> -->
       <td>{{x.coord}}</td>
       <td>
       <input ng-model="x.responsereceived" type="number" class="form-control"/>
       </td>
       <td>{{x.CRs}}</td>
-      <td>{{x.CR_per}}</td>
-      <td>{{x.compliant_per}}</td>
+      <td>{{x.CR_per | number:2}}</td>
+      <td>{{x.compliant_per | number:2}}</td>
       <td>{{x.Statuslastdate | date:'mediumDate'}}</td>
       <td>
         <!-- <span ng-hide="editing" ng-click="editItem(item)">jhh{{MOTS.dailyupdates}}</span> -->
@@ -55,7 +55,7 @@
         <!-- <span ng-hide="editing" ng-dblclick="editItem(item)">{{x.Plannedfollowupdate}}</span>
         <input ng-show="editing" ng-model="x.Plannedfollowupdate" ng-blur="doneEditing(item)" autofocus /> -->
         <!-- <textarea class="form-control" name="" id=1""  rows="1"></textarea> -->
-        <input value="{{x.Plannedfollowupdate}}" ng-hide="x.dateeditor" ng-focus="editdatecell($index)" type="text" class="form-control">
+        <input value="{{x.Plannedfollowupdate | date:'mediumDate'}}" ng-hide="x.dateeditor" ng-focus="editdatecell($index)" type="text" class="form-control">
         <input ng-if="x.dateeditor" ng-model="x.Plannedfollowupdate" ng-blur="editdatecell($index)" type="date" class="form-control" ang-autofocus/>
       </td>
       <td>
@@ -75,7 +75,7 @@
             </div>
         </div>
 <!-- will have to use resolve peoperty to get this laoded after the data is available -->
-<div class="footer" style="margin-bottom:10px;">
+<div class="footer" style="position: fixed; bottom: 0px;margin-bottom:10px;">
             <div class="container">
                 <p class="text-muted2 text-center">© 2016 Tech Mahindra.  All Rights Reserved.</p>
             </div>

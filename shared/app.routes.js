@@ -5,6 +5,14 @@ $stateProvider
    url: '/',
    templateUrl: '/components/home/homeView.html',
    controller: 'homeController'
+   // resolve:{
+   //    piechartdata: function(){
+
+   //    },
+   //    columnchartdata:function(){
+
+   //    }
+   // }
 })
 .state('form',{
    url: '/form',
@@ -27,7 +35,12 @@ $stateProvider
 .state('MOTS',{
    url:'/status',
    templateUrl: '/components/MOTS/statusView.html',
-   controller: 'statusController'
+   controller: 'statusController',
+   resolve:{
+      MOTSdetails: function(track){
+         return track.getMOTSdetails();
+      }
+   }
 })
 .state('followup',{
    url:'/followup',

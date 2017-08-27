@@ -30,11 +30,13 @@ var months = [ "January", "February", "March", "April", "May", "June",
 $scope.addCR = function(CR){
 console.log($scope.count+$scope.dbcount);
 var CR_data = CR;
-CR_data.month = months[new Date().getMonth()];
+CR_data.datecreated = new Date();
 CR_data.recount = 0;
 CR_data.reschedule = [];
 CR_data.coord = auth.mainuser;
 CR_data.totalcount = $scope.count+$scope.dbcount;
+CR_data.ATTUID = auth.mainuser_id;
+
   form.postdata('/form',JSON.stringify(CR_data))
   .then(function(response){
     $scope.msg=response;

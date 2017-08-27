@@ -56,7 +56,42 @@ app.directive('pieChart', function(chartService,$window){
                      convert(
                         config.firstColumnHeader,
                         config.secondColumnHeader,n),
-                     {title:scope.chartConfig.title, is3D: true, backgroundColor:'#eee'});
+                     {title:scope.chartConfig.title, is3D: true, backgroundColor:'#eee',right:0});
+               }
+            }, true);
+         });
+      }
+   };
+});
+
+app.directive('columnChart', function(chartService,$window){
+   var convert = function(first,second,third,fourth,data){
+      var array = [[first,second,third,fourth]];
+            for(var i=0; i<data.length;i++){
+         array.push([data[i].label, data[i].Prod,data[i].Non_prod,data[i].Stage]);
+      }
+      return google.visualization.arrayToDataTable(array);
+   };
+   return{
+      restrict:'A',
+      scope:{
+         'chartData':'=',
+         'chartConfig':'='
+      },
+      link: function(scope,el,attrs){
+         chartService.then(function(){
+            var chart = new google.visualization.ColumnChart(el[0]);
+            
+            scope.$watch('chartData', function(n,o){
+               var config = scope.chartConfig;
+               if(n){
+                  chart.draw(
+                    convert(
+                        config.firstColumnHeader,
+                        config.secondColumnHeader,
+                        config.thirdColumnHeader,
+                        config.secondColumnHeader,n),
+                     {title:scope.chartConfig.title,isStacked: true, backgroundColor:'#eee',left:0});
                }
             }, true);
          });

@@ -17,6 +17,28 @@ app.factory('auth', function($http,$q){
     return obj;
 });
 
+// app.factory('piechart',function($http,$q){
+//   return{
+//     getdetails: function(){
+
+//      }
+//   }
+// });
+
+app.factory('columnchart',function($http,$q,auth){
+  return{
+   getdetails: function(){
+     var deferred=$q.defer();
+     $http.get('/columnchart/'+auth.mainuser_id).then(function(response){
+          deferred.resolve(response.data);
+     }, function(response){
+          deferred.reject(response.data)
+     });
+     return deferred.promise;
+     }
+  }
+});
+
 app.factory('put', function($http,$q){
     var obj = {};
     obj.putdata = function(ep,data){
