@@ -5,7 +5,21 @@ var jsonfile = require('jsonfile');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')
 var multer = require('multer'); // v1.0.5
-var upload = multer(); // for parsing multipart/form-data
+
+var storage = multer.diskStorage({ //multers disk storage settings
+        destination: function (req, file, cb) {
+            cb(null, './uploads/')
+        },
+        filename: function (req, file, cb) {
+            // var datetimestamp = Date.now();
+            cb(null, file.originalname)
+        }
+    });
+
+var upload = multer({ //multer settings
+                    storage: storage
+                });// for parsing multipart/form-data
+
 var session = require('express-session');
 var login = require('./login.js');
 var main = require('./main.js');
@@ -14,7 +28,7 @@ jsonfile.spaces=2;
 app.use(cookieParser())
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(upload.array());
+
 app.use(session({secret: "Your secret key",resave: true,saveUninitialized: true}));
 app.use('/components', express.static(__dirname+'/components'));
 app.use('/assets', express.static(__dirname+'/assets'));
@@ -29,7 +43,7 @@ app.get('/authenticate', function(req,res){
     res.status(200).send({name:req.session.name,id:req.session.ATTUID,mail:req.session.mail});
     }
     else{
-     res.sendStatus(401);
+     res.sendStatus(401).send("OK");
     }
 });
 
@@ -69,6 +83,7 @@ app.get('/logout', function(req, res){
 
 app.get('/columnchart/:id', function(req,res){
    console.log(req.params.id);
+   res.sendStatus(200);
 });
 
 //==============================================================================================//
@@ -169,11 +184,45 @@ app.get('/MOTSdetails', function(req,res){
   });
 })
 
+
+
 //=============================================================================================//
 app.post('/reschedule', function(req,res){
   
 })
 
+// ==============================Followup=====================================//
+
+app.get('/followup/:MOTS', function(req,res){
+  jsonfile.readFile(__dirname+"/mails.json", function(err,obj){
+    if(err){
+      return console.log(err);
+    }
+    console.log(req.params.MOTS);
+    for(x in obj){
+      if(req.params.MOTS == x){
+        var valuefound=true;
+        res.end(JSON.stringify(obj[x]))
+        break;
+      } 
+    }
+    if(!valuefound){
+    res.send("MOTSID do not exist");
+    }
+  });
+})
+
+app.post('/upload_init',upload.any(), function(req, res,next){
+  console.log("request received")
+  console.log(JSON.parse(req.body.field));
+  console.log(req.files);
+  res.send("Files uploaded successfully");
+})
+
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 
 app.listen(3000, function(){
     console.log("app listening at port 3000.....");

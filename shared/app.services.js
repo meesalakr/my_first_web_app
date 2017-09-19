@@ -81,6 +81,20 @@ app.factory('details',  function($http,$q){
   return obj;
 })
 
+app.factory('IDdetails',  function($http,$q){
+  var obj = {};
+  obj.getID_details = function(ID){
+    var deferred=$q.defer();
+     $http.get('/followup/'+ID).then(function(response){
+          deferred.resolve(response.data);
+     }, function(response){
+          deferred.reject(response.data)
+     });
+     return deferred.promise;
+  }
+  return obj;
+})
+
 app.factory('track', function($http,$q){
   var obj={};
   obj.getMOTSdetails = function(){
@@ -95,6 +109,30 @@ app.factory('track', function($http,$q){
   return obj;
   
 })
+
+app.service('fileUpload', ['$http','$q' ,function ($http,$q) {
+    this.uploadFileToUrl = function(file,field, uploadUrl){
+        var deferred = $q.defer();
+        var fd = new FormData();
+        for (var i = 0; i < file.length; i++) {
+           fd.append(file[i].name, file[i])
+        }
+        
+        fd.append('field', JSON.stringify(field));
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        }).then(function(response){
+            deferred.resolve(response.data);
+            for(var x of fd.entries()) {
+            fd.delete(x[0]);
+         }
+        }, function(response){
+           deferred.reject(response.data)
+        })
+        return deferred.promise;
+    }
+}]);
 
 app.factory('chartService', function($q, $rootScope, $window){
   var deferred = $q.defer();

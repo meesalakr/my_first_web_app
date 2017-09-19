@@ -109,3 +109,22 @@ app.directive('angAutofocus', ['$timeout', function($timeout) {
     }
   }
 }]);
+
+ app.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+             console.log("link");
+            element.on('change', function(){
+                console.log("changes")
+                console.log(element[0].files);
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files);
+                });
+             });
+        
+    }
+}
+}]);

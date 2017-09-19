@@ -1,8 +1,8 @@
 <div style="margin-bottom:10px" class="row">
   <div class="col-md-2 col-sm-offset-1">
-    <input type="text" class="form-control" placeholder="Enter MOTS ID here">
+    <input type="text" class="form-control" placeholder="Enter MOTS ID here" ng-model="ID">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" ng-click="getIDdetails()">Submit</button>
 </div>
 
 
@@ -11,7 +11,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">MOTS ID</div>
   <div class="panel-body">
-    26428
+    {{MOTSID}}
   </div>
 </div>
 </div>
@@ -24,7 +24,7 @@
     <h3 class="panel-title">Application name</h3>
   </div>
   <div class="panel-body">
-    CSI
+    {{App}}
   </div>
 </div></div>
 
@@ -34,7 +34,7 @@
     <h3 class="panel-title">Initial</h3>
   </div>
   <div class="panel-body">
-    MC
+    {{initial}}
   </div>
 </div></div>
 
@@ -44,7 +44,7 @@
     <h3 class="panel-title">Reminder Mail</h3>
   </div>
   <div class="panel-body">
-    CSI
+    {{Reminder}}
   </div>
 </div></div>
 
@@ -54,7 +54,7 @@
     <h3 class="panel-title">Escalation</h3>
   </div>
   <div class="panel-body">
-    CSI
+    {{Escalation}}
   </div>
 </div></div>
 </div>
@@ -65,31 +65,33 @@
     <h3 class="panel-title">Initial FollowUp Mail</h3>
   </div>
   <div class="panel-body">
-    <form class="form-horizontal">
+
+    <form class="form-horizontal" name="Initial_form" ng-submit="submit()">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-4 control-label">To</label>
     <div class="col-sm-5">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input name="To" type="email" ng-model="form.To" class="form-control" id="inputEmail3" placeholder="Email">
     </div>
   </div>
   <div class="form-group">
     <label for="Cc" class="col-sm-4 control-label">Cc</label>
     <div class="col-sm-5">
-      <input type="email" class="form-control" id="Cc" placeholder="Cc">
+      <input name="Cc" type="email" class="form-control" ng-model="form.Cc" id="Cc" placeholder="Cc">
     </div>
   </div>
    <div class="form-group">
     <label for="exampleInputFile" class="col-sm-4 control-label">File input</label>
     <div class="col-sm-5">
-    <input type="file" class="form-control" id="exampleInputFile">
+    <input name="file" type="file" class="form-control" id="exampleInputFile" file-model="myFile" multiple>
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-3">
-      <button type="submit" class="btn btn-primary">Send</button>
+      <input type="submit" class="btn btn-primary" value="Send">
     </div>
   </div>
 </form>
+
   </div>
 </div>
 </div>

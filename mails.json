@@ -1,0 +1,72 @@
+{
+  "9081": {
+    "MOTSID": 9081,
+    "App": "uDAS",
+    "Initial":{},
+    "Reminder":[],
+    "Escalation":{}
+  },
+  "9082": {
+    "MOTSID": 9082,
+    "App": "SSAM",
+    "Initial":{},
+    "Reminder":[],
+    "Escalation":{}
+  },
+  "18181": {
+    "MOTSID": 18181,
+    "App": "DExTR",
+    "Initial":{},
+    "Reminder":[],
+    "Escalation":{}
+  },
+  "19425": {
+    "MOTSID": 19425,
+    "App": "SDP",
+    "Initial":{},
+    "Reminder":[],
+    "Escalation":{}
+  },
+  "26428": {
+    "MOTSID": 26428,
+    "App": "CSI",
+    "Initial":{},
+    "Reminder":[],
+    "Escalation":{}
+  },
+  "31414": {
+    "MOTSID": 31414,
+    "App": "SSAM",
+    "Initial":{},
+    "Reminder":[],
+    "Escalation":{}
+  },
+  "31452": {
+    "MOTSID": 31452,
+    "App": "SSAM",
+    "Initial":{},
+    "Reminder":[],
+    "Escalation":{}
+  },
+  "34258": {
+    "MOTSID": 34258,
+    "App": "SSAM",
+    "Initial":{},
+    "Reminder":[],
+    "Escalation":{}
+  },
+  "36985": {
+    "MOTSID": 36985,
+    "App": "SSAM",
+   "Initial":{},
+    "Reminder":[],
+    "Escalation":{}
+  },
+  "85241": {
+    "MOTSID": 85241,
+    "App": "SSAM",
+    "Initial":{},
+    "Reminder":[],
+    "Escalation":{}
+  }
+}
