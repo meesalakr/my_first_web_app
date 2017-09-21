@@ -1,4 +1,5 @@
 app.controller('followupController', function($scope,$http,fileUpload,$document,IDdetails){
+    console.log(angular.equals(1,2))
      $scope.submit = function(){
           console.log("sent");
            var file = $scope.myFile;
@@ -13,31 +14,28 @@ app.controller('followupController', function($scope,$http,fileUpload,$document,
           });
            
         }
-
+        
     $scope.getIDdetails = function(){
         IDdetails.getID_details($scope.ID).then(function(response){
           console.log(response);
-          $scope.MOTSID = response.MOTSID;
-          $scope.App = response.App;
-          console.log(angular.equals(response.Initial,{}))
-         if(angular.equals(response.Initial,{})){
-            $scope.initial = "None"  
+
+          if(angular.isObject(response)){
+            $scope.MOTSID = response.MOTSID;
+            $scope.App = response.App;
+            $scope.initial =response.Initial;
+            $scope.Reminder = response.Reminder;
+            $scope.Escalation = response.Escalation;
+            $scope.isObjectEmpty = function(card){
+         return Object.keys(card).length === 0;
          }
-         else{
-            $scope.initial = response.Initial.date
+         $scope.isArrayEmpty = function(card){
+         return card.length === 0;
          }
-          if(response.Reminder.length == 0){
-            $scope.Reminder = "None"
-         }
-         else{
-            $scope.Reminder = response.Reminder.date
-         }
-          if(angular.equals(response.Escalation,{})){
-            $scope.Escalation = "None"
-         }
-         else{
-            $scope.Escalation = response.Escalation.date
-         }
+          }
+          else{
+            $scope.msg = response;
+          }
+          
         }, function(response){
           console.log(response);
         })

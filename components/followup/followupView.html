@@ -3,6 +3,7 @@
     <input type="text" class="form-control" placeholder="Enter MOTS ID here" ng-model="ID">
   </div>
   <button type="submit" class="btn btn-primary" ng-click="getIDdetails()">Submit</button>
+  <span ng-show="msg">{{msg}}</span>
 </div>
 
 
@@ -34,7 +35,8 @@
     <h3 class="panel-title">Initial</h3>
   </div>
   <div class="panel-body">
-    {{initial}}
+    <span ng-show="!isObjectEmpty(initial)"> {{initial}} </span> 
+    <span ng-show="isObjectEmpty(initial)"> None </span> 
   </div>
 </div></div>
 
@@ -44,7 +46,8 @@
     <h3 class="panel-title">Reminder Mail</h3>
   </div>
   <div class="panel-body">
-    {{Reminder}}
+   <span ng-show="!isArrayEmpty(Reminder)"> {{Reminder}} </span>
+   <span ng-show="isArrayEmpty(Reminder)"> None </span> 
   </div>
 </div></div>
 
@@ -54,7 +57,8 @@
     <h3 class="panel-title">Escalation</h3>
   </div>
   <div class="panel-body">
-    {{Escalation}}
+    <span ng-show="!isObjectEmpty(Escalation)"> {{Escalation}} </span>
+    <span ng-show="isObjectEmpty(Escalation)"> None </span>
   </div>
 </div></div>
 </div>
