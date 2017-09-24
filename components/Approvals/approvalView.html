@@ -1,0 +1,39 @@
+<input type="file" file-model="myFile">
+<button class="btn btn-primary" ng-click="submit()">Upload</button>
+<div class="container">
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
+ <thead>
+   <tr class="info">
+     <th><input type="checkbox"></th>
+     <th>CRNO</th>
+     <th>MOTSID </th>
+     <th>Applications</th>
+     <th>Environment</th>
+     <th>Count</th>
+     <th>MW Start </th>
+     <th>MW End </th>
+     <th>Coordinator </th>
+   
+   </tr>
+ </thead>
+
+ <tbody>
+   <!-- <tr ng-repeat="x in CRs | filter: search track by $index"> -->
+   <tr>
+     <td><input type="checkbox"></td>
+     <td>index</td>
+     <td>x.CRNO</td>
+     <td>x.MOTSID</td>
+     <td>x.App</td>
+     <td>x.selectedEnv}}</td>
+     <td>x.totalcount}}</td>
+     <td>x.startdate | date:'medium'}}</td>
+     <td>x.enddate | date: 'medium'}}</td>
+     <td>x.coord</td>
+  
+   </tr>
+ </tbody>
+ </table>
+</div>
+</div>

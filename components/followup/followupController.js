@@ -1,5 +1,5 @@
 app.controller('followupController', function($scope,$http,fileUpload,$document,IDdetails){
-    console.log(angular.equals(1,2))
+    
      $scope.submit = function(){
           console.log("sent");
            var file = $scope.myFile;

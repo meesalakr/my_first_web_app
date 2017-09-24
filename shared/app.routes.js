@@ -46,6 +46,11 @@ $stateProvider
    url:'/followup',
    templateUrl: '/components/followup/followupView.html',
    controller: 'followupController'
+})
+.state('approval',{
+   url:'/approval',
+   templateUrl: '/components/Approvals/approvalView.html',
+   controller: 'approvalsController'
 });
 //.otherwise({
   //  redirectTo:'/'

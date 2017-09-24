@@ -114,6 +114,7 @@ app.service('fileUpload', ['$http','$q' ,function ($http,$q) {
     this.uploadFileToUrl = function(file,field, uploadUrl){
         var deferred = $q.defer();
         var fd = new FormData();
+        console.log(file[0]);
         for (var i = 0; i < file.length; i++) {
            fd.append(file[i].name, file[i])
         }

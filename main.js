@@ -13,7 +13,7 @@ function checkSignIn(req, res, next){
    }
 }
 
-router.get(['/','/details','/form','/followup','/status'], checkSignIn, function(req,res){
+router.get(['/','/details','/form','/followup','/status','/approval'], checkSignIn, function(req,res){
    console.log(req.session)
    res.sendFile(__dirname+'/index.html');
 });
